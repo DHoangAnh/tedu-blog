@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/shared/auth.guard';
 
 export const content: Routes = [
   {
@@ -10,8 +11,10 @@ export const content: Routes = [
     path: 'posts',
     loadComponent: () => import('./posts/post.component').then(m => m.PostComponent),
     data: {
-      title: 'Posts'
-    }
+      title: 'Bài viết',
+      requiredPolicy: 'Permissions.Posts.View',
+    },
+    canActivate: [AuthGuard],
   }
 ];
 

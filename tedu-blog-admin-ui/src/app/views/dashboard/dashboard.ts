@@ -1,12 +1,15 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/shared/auth.guard';
 
 export const dashboard: Routes = [
   {
     path: '',
     loadComponent: () => import('./dashboard.component').then(m => m.DashboardComponent),
     data: {
-      title: $localize`Dashboard`
-    }
+      title: 'Trang chủ',
+      requiredPolicy: 'Permissions.Dashboard.View',
+    },
+    canActivate: [AuthGuard],
   }
 ];
 

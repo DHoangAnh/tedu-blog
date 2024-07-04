@@ -5,12 +5,17 @@ import { Title } from '@angular/platform-browser';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from './icons/icon-subset';
 import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @Component({
   selector: 'app-root',
-  template: '<p-toast position="top-center" /><router-outlet />',
+  template: `
+  <p-toast position="top-center" />
+  <p-confirmDialog header="Xác nhận" acceptLabel="Có" rejectLabel="Không" icon="pi pi-exclamation-triangle" />
+  <router-outlet />
+  `,
   standalone: true,
-  imports: [RouterOutlet, ToastModule]
+  imports: [RouterOutlet, ToastModule, ConfirmDialogModule]
 })
 export class AppComponent implements OnInit {
   title = 'Tedu Blog Admin Ui';
